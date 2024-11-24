@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 function App() {
-  const [value, setValue] = useState(''); // Setează inițial cu un string gol
+  const [value, setValue] = useState(''); 
   const [message, setMessage] = useState(null);
   const [pastchat, setPastchat] = useState([]);
   const [curentTitle, setCurentTitle] = useState(null);
@@ -24,7 +24,7 @@ function App() {
     const options = {
       method: "POST",
       body: JSON.stringify({
-        message: value // Trimite mesajul introdus de utilizator
+        message: value 
       }),
       headers: {
         "Content-Type": "application/json"
@@ -33,9 +33,9 @@ function App() {
 
     try {
       const response = await fetch('http://localhost:8000/completions', options);
-      const data = await response.json(); // Așteaptă să obții rezultatul complet
+      const data = await response.json(); 
       console.log(data);
-      setMessage(data.choices[0].message); // Corectat din "choises" în "choices"
+      setMessage(data.choices[0].message);
     } catch (error) {
       console.error(error);
     }
@@ -75,7 +75,7 @@ function App() {
           {curentChat?.map((chatMessage, index) => (
             <li key={index}>
               <p className='role'>{chatMessage.role}:</p>
-              <p>{chatMessage.content}</p> {/* Corectat din "message" în "content" */}
+              <p>{chatMessage.content}</p> 
             </li>
           ))}
         </ul>
